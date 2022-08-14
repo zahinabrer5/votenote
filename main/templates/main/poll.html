@@ -1,0 +1,74 @@
+{% extends 'main/base.html' %}
+
+{% block 'title' %}{{poll.title}}{% endblock %}
+
+{% block 'content' %}
+
+<main>
+    <div class="container pt-5 d-flex-box justify-content-center text-align-center">
+      <div data-aos="fade-down" data-aos-duration="3000" class="row">
+        <div id="halfsize-buttons" class="container text-center">
+
+
+
+
+<h3 class="mb-6">{{poll.title}}</h3>
+{% if use_form %}
+<script>
+    document.getElementById("halfsize-buttons").classList.add("col-lg-6");
+</script>
+<form method="post" action="">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-success btn-block mb-4" name="yes">Yes</button>
+    <button type="submit" class="btn btn-danger btn-block mb-4" name="no">No</button>
+</form>
+{% else %}
+<div class="mb-6">
+    <p>Yes Votes: {{yes_votes}} ({{yes_percent}}%)</p>
+    <p>No Votes: {{no_votes}} ({{no_percent}}%)</p>
+</div>
+<canvas id="myChart" width="400" height="100"></canvas>
+
+<script type="text/javascript">
+const ctx = document.getElementById('myChart').getContext('2d');
+var yes = "{{ yes_votes|safe}}";
+var no = "{{ no_votes|safe}}";
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Yes', 'No'],
+        datasets: [{
+            data: [yes, no],
+            backgroundColor: color => {
+              let colors = color.index > 0 ? 'rgba(255, 131, 69, 0.2)' : 'rgba(36, 127, 28, 0.2)';
+              return colors;
+            },
+            borderColor: color => {
+              let colors = color.index > 0 ?  'rgba(255, 131, 69, 1)' : 'rgba(36, 127, 28, 1)';
+              return colors;
+            },
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        },
+        plugins: {
+            legend: {
+                display: false
+            },
+        }
+    }
+});
+</script>
+{% endif %}
+</div>
+</div>
+</div>
+</main>
+
+
+{% endblock %}

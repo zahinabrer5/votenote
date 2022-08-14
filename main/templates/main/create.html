@@ -1,0 +1,42 @@
+{% extends 'main/base.html' %}
+
+{% block 'title' %}Create a new poll{% endblock %}
+
+{% block 'nav_items' %}
+<li class="nav-item">
+    <a class="nav-link" aria-current="page" href="/">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="/create">Create</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/list">List</a>
+  </li>
+{% endblock %}
+  
+
+{% block 'content' %}
+
+
+  <main>
+    <div class="container pt-5 d-flex-box justify-content-center text-align-center">
+        <div data-aos="fade-down" data-aos-duration="3000" class="row">
+          <div class="container text-center col-lg-6">
+            <h3 class="mb-4">Create a new poll</h3>
+    
+            <form method="post" action="">
+              {% csrf_token %}
+              {{form.as_p}}
+              <button type="submit" class="btn btn-success btn-block mb-4">Create</button>
+            </form> 
+          </div>
+        </div>
+      </div>
+  </main>
+
+
+
+
+
+{% endblock %}
+

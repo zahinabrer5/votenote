@@ -1,0 +1,41 @@
+{% extends 'main/base.html' %}
+
+{% load static %}
+
+{% block 'title' %}Votenote{% endblock %}
+
+
+{% block 'nav_items' %}
+<li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="/">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/create">Create</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/list">List</a>
+  </li>
+{% endblock %}
+
+
+{% block 'content' %}
+  <!--Hero-->
+  <main>
+    <div class="container pt-5 d-flex-box justify-content-center">
+      <div data-aos="fade-down" data-aos-duration="3000" class="row justify-content-center">
+        <div class="col-lg-6">
+          <h2 class="header">Make <span class="orange">Your</span> Voice Heard.</h2>
+          <p style="line-height: 40px;">Start voting today and see the results in real-time.</p>
+          <div class="lc-block d-grid gap-2 d-md-flex justify-content-md-start">
+            <a href="/create" class="btn btn-success mb-4">Get Started</a>
+          </div>
+          
+
+        </div>
+        <div class=" col-10 col-sm-8 col-lg-6">
+          <img class="hero-img img-fluid mx-auto float-right" src="{% static 'main/images/graph.png' %}" draggable="false">
+        </div>
+      </div>
+    </div>
+</main>
+{% endblock %}

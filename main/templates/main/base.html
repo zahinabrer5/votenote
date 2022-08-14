@@ -1,0 +1,193 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.3.0/mdb.min.css" rel="stylesheet" />
+  <!--AOS-->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!--Google Fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <!--Chartjs-->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+
+  <link rel="icon" href="{% static 'main/images/favicon.png' %}">
+</head>
+
+<style>
+    html, body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-green);
+  }
+  
+  :root {
+    --light-green: #ebf7f3;
+    --primary-green: #48b774;
+    --secondary-green: #247f1c
+    --dark-grey: #191919;
+    --primary-orange: #ff8345;
+  
+    --bold: 700;
+    --semi-bold: 600;
+    --medium: 500;
+    --regular: 400;
+    --light: 300;
+  
+    --h1: 70px;
+    --h2: 48px;
+    --h3: 42px;
+    --h4: 32px;
+  
+    --p-regular: 16px;
+    --p-medium: 18px;
+    --p-light: 13px;
+  }
+  
+  
+  main {
+    width: 100%;
+  }
+  
+  h2 {
+    font-size: var(--h1);
+    font-weight: var(--bold);
+  }
+
+  .xs {
+    font-size: var(--p-light);
+  }
+
+  
+  .orange {
+    color: var(--primary-orange);
+  }
+  
+  h3 {
+    font-size: var(--h3);
+    font-weight: var(--semi-bold);
+  }
+
+  .poll-item:link {
+    color: var(--primary-green);
+  }
+
+  .poll-item:visited {
+    color: var(--primary-green);
+  }
+
+  .poll-item:hover {
+    color: var(--secondary-green);
+  }
+
+  .poll-item:active {
+    color: var(--secondary-green);
+  }
+
+</style>
+
+
+
+
+    <title>{% block 'title' %}{% endblock %}</title>
+</head>
+<body>
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: var(--light-green);">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img src="{% static 'main/images/logo.png' %}" alt="logo" height="35" draggable="false">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+        {% block 'nav_items' %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/create">Create</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/list">List</a>
+          </li>
+        {% endblock %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+    <div id="content">
+        {% block 'content' %}
+        {% endblock %}
+    </div>
+
+
+    <!-- Footer -->
+    <div id="footer" class="container">
+        <footer class="py-3 mt-auto">
+          <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+            <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">Home</a></li>
+            <li class="nav-item"><a href="/create" class="nav-link px-2 text-muted">Create</a></li>
+            <li class="nav-item"><a href="/list" class="nav-link px-2 text-muted">List</a></li>
+            <li class="nav-item"><a href="https://github.com/zahinabrer5" target="_blank" class="nav-link px-2 text-muted">Source Code</a></li>
+          </ul>
+          <p class="text-center text-muted">&copy; <script>document.write(new Date().getFullYear())</script> Vorpal Inc</p>
+        </footer>
+      </div>
+
+      <!-- jQuery -->
+      <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+      <script>
+        $(document).ready(function() {
+            setInterval(function() {
+                var docHeight = $(window).height();
+                var footerHeight = $('#footer').height();
+                var footerTop = $('#footer').position().top + footerHeight;
+                var marginTop = (docHeight - footerTop + 10);
+    
+                if (footerTop < docHeight)
+                    $('#footer').css('margin-top', marginTop + 'px'); // padding of 30 on footer
+                else
+                    $('#footer').css('margin-top', '0px');
+                // console.log("docheight: " + docHeight + "\n" + "footerheight: " + footerHeight + "\n" + "footertop: " + footerTop + "\n" + "new docheight: " + $(window).height() + "\n" + "margintop: " + marginTop);
+            }, 250);
+        });
+    </script>
+      
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+    crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/cdd3a2d1cc.js" crossorigin="anonymous"></script>
+  <!-- MDB -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.3.0/mdb.min.js"></script>
+  <!--AOS-->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    AOS.init();
+  </script>
+
+</body>
+</html>
