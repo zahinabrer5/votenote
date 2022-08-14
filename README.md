@@ -4,7 +4,7 @@ A web app built with Django for AbracadabraHacks 2 that allows for real-time pol
 ## Prerequisites 
 ```$ pip install requirements.txt```
 
-## Mockup
+## Preview
 <img alt="Votenote mockup" width="730" src="https://i.ibb.co/NS29yXr/mockup.jpg">
 
 # Team Members
