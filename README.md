@@ -1,7 +1,7 @@
 # Votenote
 A web app built with Django for AbracadabraHacks 2 that allows real-time poll making and voting online. The Python-based web framework, Django, was used for the backend while HTML5, Javascript, and Bootstrap/Material Design/CSS were used for the frontend. Interactive data visualization was created through Javascript's open-source Chart.js library.
 
-**Won Second Overall in Abracadabra Hacks 2 at MLH**
+🏆**Won Second Overall in Abracadabra Hacks 2 at MLH**
 
 Devpost: https://devpost.com/software/votenote
 
