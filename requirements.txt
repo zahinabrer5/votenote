@@ -1,6 +1,6 @@
 asgiref==3.5.2
 backports.zoneinfo==0.2.1
-Django==4.1
+Django==4.2.24
 django-ipware==4.0.2
 python-dotenv==0.20.0
 sqlparse==0.4.2
